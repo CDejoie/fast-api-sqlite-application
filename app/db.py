@@ -1,19 +1,17 @@
 from typing import Iterator
 
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import Session
 
-DATABASE_URL = "sqlite:///./data.db"
+from core.db_common import get_engine, get_session
 
-
-engine = create_engine(
-    DATABASE_URL, connect_args={"check_same_thread": False}, echo=True
-)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+DATABASE_URL = "sqlite:///./databases/data.db"
 
 
-def get_db() -> Iterator:
+engine = get_engine(DATABASE_URL)
+SessionLocal = get_session(engine)
+
+
+def get_db() -> Iterator[Session]:
     db = SessionLocal()
     try:
         yield db

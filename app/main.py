@@ -6,8 +6,8 @@ from starlette.requests import Request
 from starlette.responses import StreamingResponse
 
 from app.db import engine
-from core.models import Base
 from app.routes import router
+from core.models import Base
 
 
 app = FastAPI(title="Sample FastAPI with SQLite DB Application")

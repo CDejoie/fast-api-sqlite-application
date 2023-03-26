@@ -6,7 +6,5 @@ from features.tasks.models import Task
 
 
 class TaskRepository(ModelRepository):
-    model = Task
-
     def __init__(self, db=Depends(get_db)) -> None:
-        super().__init__(db=db, model=self.model)
+        super().__init__(db=db, model=Task)

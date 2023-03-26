@@ -24,5 +24,5 @@ class TaskUpdate(BaseModel):
     @classmethod
     def any_of(cls, parameter):
         if len([value for value in parameter.values() if value != None]) == 0:
-            raise ValueError('You must update at least one value')
+            raise ValueError("You must update at least one value")
         return parameter
